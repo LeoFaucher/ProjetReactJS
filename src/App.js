@@ -5,6 +5,8 @@ import List from "./components/list/list";
 import { getGamesNameList, getGamesCoverList } from "./services/gameListClient";
 
 export default class App extends Component {
+  
+  
   async componentDidMount() {
     const gamesNameList = await getGamesNameList("games");
     const gamesCoverList = await getGamesCoverList("covers");
@@ -15,8 +17,9 @@ export default class App extends Component {
     });
   }
   render() {
-    // const {gamesNameList} = this.state
-    // console.log('App.render ===>',gamesNameList)
+    const {gamesNameList,gamesCoverList} = this.props
+    console.log('App.render ===>',gamesNameList)
+    console.log('App.render ===>',gamesCoverList)
     return (
       <div className="App">
         <header className="App-header">
@@ -26,10 +29,10 @@ export default class App extends Component {
             alt="Logo"
             height="300"
             width="300"
-          />
+          /> 
           LA PICHE GAME'S
         </header>
-        <List></List>
+        <List list = {gamesCoverList} cover = {gamesNameList}></List>
         <gameDetails></gameDetails>
         <input type="text" />
       </div>

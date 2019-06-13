@@ -11,7 +11,7 @@ export async function getGamesNameList (games) {
             'Accept': 'application/json',
             'user-key': API_KEY
         },
-        data: "name"
+        data: "name;"
       })
 
       return data
