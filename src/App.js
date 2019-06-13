@@ -29,8 +29,8 @@ export default class App extends Component {
           />
           LA PICHE GAMES'
         </header>
-        <List />
-        <gameDetails />
+        <List></List>
+        <gameDetails></gameDetails>
         <input type="text" />
       </div>
     );
