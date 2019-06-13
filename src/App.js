@@ -27,7 +27,7 @@ export default class App extends Component {
             height="300"
             width="300"
           />
-          LA PICHE GAMES'
+          LA PICHE GAME'S
         </header>
         <List></List>
         <gameDetails></gameDetails>
