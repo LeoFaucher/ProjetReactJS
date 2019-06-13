@@ -22,12 +22,6 @@ export default class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-
-          <List></List>
-          <gameDetails></gameDetails>
-          LA PICHE GAMES'
-          <List />
-
           <img id='logo' src='https://st3.depositphotos.com/9866364/19226/i/1600/depositphotos_192261768-stock-photo-laptop-gamepad-headphones-potato-chips.jpg' alt='Logo' height='300' width='300'/>
           LA PICHE GAMES'
         </header>
