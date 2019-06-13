@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import List from "./components/list/List";
+import List from "./components/list/list";
 import { getGamesList } from "./services/gameListClient";
 
 export default class App extends Component {
