@@ -6,9 +6,17 @@ import { getGamesList } from "./services/gameListClient";
 
 export default class App extends Component {
   async componentDidMount() {
-    getGamesList("games");
+    const gamesNameList = await getGamesNameList("games");
+    const gamesCoverList = await getGamesCoverList("covers");
+    console.log('App.render ===>',gamesNameList)
+    this.setState({
+      gamesNameList,
+      gamesCoverList,
+    })
   }
   render() {
+    const {gamesList} = this.state
+    console.log('App.render ===>',gamesList)
     return (
       <div className="App">
         <header className="App-header">
