@@ -9,8 +9,6 @@ import gameDetails from "./components/games-details/games-details";
 import { getGamesList } from "./services/gameListClient";
 =======
 import { getGamesNameList, getGamesCoverList } from "./services/gameListClient";
-import { getGamesDetailsList } from "./services/gameListClient";
->>>>>>> Stashed changes
 
 export default class App extends Component {
   async componentDidMount() {
