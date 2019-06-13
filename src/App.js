@@ -2,10 +2,15 @@ import React, { Component } from "react";
 import "./App.css";
 import List from "./components/list/list";
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import gameDetails from "./components/games-details/games-details";
 =======
 >>>>>>> Stashed changes
 import { getGamesList } from "./services/gameListClient";
+=======
+import { getGamesNameList, getGamesCoverList } from "./services/gameListClient";
+import { getGamesDetailsList } from "./services/gameListClient";
+>>>>>>> Stashed changes
 
 export default class App extends Component {
   async componentDidMount() {

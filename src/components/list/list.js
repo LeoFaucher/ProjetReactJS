@@ -21,7 +21,11 @@ export default class List extends Component {
   render() {
     return (
       <div className="gameList">
-        <ul>{this.gameList()}</ul>
+        <ul>
+        <li>
+        {this.gameList()}
+        </li>
+        </ul>
       </div>
     );
   }
