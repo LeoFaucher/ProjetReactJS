@@ -5,8 +5,12 @@ export default class List extends Component {
     games: [],
     show: false
   };
-  toggleTittle() {
-    const { show } = this.state;
+  toggleTitle() {
+    const {show} = this.state
+
+    this.setState({
+      show: !show
+    })
   }
 
   gameList() {
