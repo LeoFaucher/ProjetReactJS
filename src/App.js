@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import "./App.css";
 import List from "./components/list/list";
-import gameDetails from "./components/games-details/games-details";
-import { getGamesNameList, getGamesCoverList } from "./services/gameListClient";
+import { getGamesNameList, getGamesCoverList, getGamesDetailsList } from "./services/gameListClient";
 
 export default class App extends Component {
   async componentDidMount() {
     const gamesNameList = await getGamesNameList("games");
+    const gamesDetailsList = await getGamesDetailsList("covers");
     const gamesCoverList = await getGamesCoverList("covers");
-    console.log("App.render ===>", gamesNameList);
+    console.log("App.render ===>", gamesNameList , gamesDetailsList);
     this.setState({
       gamesNameList,
-      gamesCoverList
+      gamesCoverList,
+      gamesDetailsList,
     });
   }
 
@@ -27,9 +28,7 @@ export default class App extends Component {
 
   render() {
     const{title} = this.state
-    const {gamesNameList,gamesCoverList} = this.props
-    console.log('App.render ===>',gamesNameList)
-    console.log('App.render ===>',gamesCoverList)
+    const {gamesNameList,gamesCoverList, gamesDetailsList} = this.state
     return (
       <div className="App">
         <header className="App-header">
@@ -43,7 +42,7 @@ export default class App extends Component {
           LA PICHE GAME'S
         </header>
         <List list = {gamesCoverList} cover = {gamesNameList}></List>
-        <gameDetails></gameDetails>
+        <List details = {gamesDetailsList}></List>
         <input type="text" onChange={(...args) => this.onChangeTitle(...args)}/>
         <div>
           {title}
