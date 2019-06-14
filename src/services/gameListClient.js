@@ -12,34 +12,7 @@ export async function getGamesNameList() {
             'Accept': 'application/json',
             'user-key': API_KEY
         },
-        data: "fields name, popularity, url; sort popularity desc; limit 50;"
+        data: "fields *; sort popularity desc; limit 50;"
     })
     return data
 }
-// return les cover contenu dans l'api d'igdb
-export async function getGamesCoverList() {
-    const { data } = await axios({
-        url: URL + '/covers',
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'user-key': API_KEY
-        },
-        data: "fields alpha_channel,animated,game,height,image_id,url,width;"
-    })
-    return data
-}
-
-export async function getGamesDetailsList() {
-
-    const { data } = await axios({
-        url: URL + '/games',
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'user-key': API_KEY
-        },
-        data: "fields *; limit 50;"
-    })
-    return data
-  }

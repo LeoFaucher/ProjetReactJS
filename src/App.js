@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import List from "./components/list/list";
 import { getGamesNameList, getGamesCoverList, getGamesDetailsList } from "./services/gameListClient";
 import Data from "./components/Data"
 
@@ -12,17 +11,7 @@ export default class App extends Component {
 
   async componentDidMount() {
     const datas = await getGamesNameList();
-    const gamesNameList = await getGamesNameList();
-    const gamesDetailsList = await getGamesDetailsList("covers");
-    const gamesCoverList = await getGamesCoverList("covers");
-    console.log("App.gameNameList ===>", gamesNameList);
-    console.log("App.gamedetails =====>", gamesDetailsList)
-    this.setState({
-      datas,
-      gamesNameList,
-      gamesCoverList,
-      gamesDetailsList,
-    });
+    this.setState({ datas });
   }
 
   state = { title: 'test', cover: '', name: '' }
@@ -37,7 +26,6 @@ export default class App extends Component {
 
   render() {
    const { title , datas } = this.state
-    const { gamesNameList, gamesCoverList, gamesDetailsList } = this.state
     return (
       <div className="App">
         <header className="App-header">
