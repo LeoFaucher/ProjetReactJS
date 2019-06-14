@@ -5,7 +5,7 @@ import Data from "./components/Data"
 
 export default class App extends Component {
   state = {
-    title : "",
+    search : '',
     datas : []
   }
 
@@ -15,18 +15,19 @@ export default class App extends Component {
     this.setState({ datas });
   }
 
-  state = { title: 'test', cover: '', name: '' }
 
-  onChangeTitle(event) {
-    this.setState({
-      title: event.currentTarget.value
+  updateSearch(event) {
+    const search = event.currentTarget.value
+    this.setState({ search: search.toLowerCase() })
+  }
       //ici on fera en sorte qu'on récupère les infos de la liste
       //gamesNameList, gamesCoverList: event.currentTarget.value
-    })
-  }
 
   render() {
-   const { title , datas } = this.state
+   const { search , datas } = this.state
+   const filteredGames = datas.filter(datas => {
+    return datas.name.toLowerCase().indexOf(search) !== -1
+  })
     return (
       <div className="App">
         <header className="App-header">
@@ -39,11 +40,11 @@ export default class App extends Component {
           />
           CLARA GAME'S PICHIES !!!
         </header>
-        <input type="text" onChange={(...args) => this.onChangeTitle(...args)} />
         <div>
-          {title}
+        <input type="search" onChange={this.updateSearch.bind(this)} />       
+          
         </div>
-        <Data datas={datas}></Data>
+        <Data datas={filteredGames}></Data>
       </div>
     );
   }
