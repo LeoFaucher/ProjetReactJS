@@ -12,7 +12,7 @@ export default class Data extends Component {
       <ul>
         {datas.map(data => (
           <li key={data.id}>
-            {data.name}
+            <a href={data.url}>{data.name}</a>
           </li>
         ))}
       </ul>

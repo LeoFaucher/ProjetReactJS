@@ -12,7 +12,7 @@ export async function getGamesNameList() {
             'Accept': 'application/json',
             'user-key': API_KEY
         },
-        data: "fields name, popularity; sort popularity desc; limit 50;"
+        data: "fields name, popularity, url; sort popularity desc; limit 50;"
     })
     return data
 }
