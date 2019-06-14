@@ -16,3 +16,15 @@ export async function getGamesNameList() {
     })
     return data
 }
+export async function getCover() {
+    const { cover } = await axios({
+        url: URL + '/cover',
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'user-key': API_KEY
+        },
+        data: "fields *; sort popularity desc; limit 50;"
+    })
+    return cover
+}

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { getGamesNameList, getGamesCoverList, getGamesDetailsList } from "./services/gameListClient";
+import { getGamesNameList, getGamesCoverList, getGamesDetailsList, getCover } from "./services/gameListClient";
 import Data from "./components/Data"
 
 export default class App extends Component {
@@ -11,6 +11,7 @@ export default class App extends Component {
 
   async componentDidMount() {
     const datas = await getGamesNameList();
+    //const datas = await getCover();
     this.setState({ datas });
   }
 
