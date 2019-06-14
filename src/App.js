@@ -40,7 +40,7 @@ export default class App extends Component {
             height="300"
             width="300"
           />
-          LA PICHE GAME'S
+          CLARA GAME'S PICHIES !!!
         </header>
         <List list={gamesCoverList} cover={gamesNameList}></List>
         <List details={gamesDetailsList}></List>
