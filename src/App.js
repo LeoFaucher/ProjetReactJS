@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import List from "./components/list/list";
-// import gameDetails from "./components/games-details/games-details";
+import gameDetails from "./components/games-details/games-details";
 import { getGamesNameList, getGamesCoverList } from "./services/gameListClient";
 
 export default class App extends Component {
-  
-  
   async componentDidMount() {
     const gamesNameList = await getGamesNameList("games");
     const gamesCoverList = await getGamesCoverList("covers");
@@ -16,7 +14,19 @@ export default class App extends Component {
       gamesCoverList
     });
   }
+
+  state = { title: 'test', cover: '', name: ''}
+
+  onChangeTitle (event) {
+    this.setState({
+      title: event.currentTarget.value
+      // ici on fera en sorte qu'on récupère les infos de la liste
+      //gamesNameList, gamesCoverList: event.currentTarget.value
+    })
+  }
+
   render() {
+    const{title} = this.state
     const {gamesNameList,gamesCoverList} = this.props
     console.log('App.render ===>',gamesNameList)
     console.log('App.render ===>',gamesCoverList)
@@ -34,7 +44,10 @@ export default class App extends Component {
         </header>
         <List list = {gamesCoverList} cover = {gamesNameList}></List>
         <gameDetails></gameDetails>
-        <input type="text" />
+        <input type="text" onChange={(...args) => this.onChangeTitle(...args)}/>
+        <div>
+          {title}
+        </div>  
       </div>
     );
   }
