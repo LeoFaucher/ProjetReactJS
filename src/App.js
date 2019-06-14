@@ -2,17 +2,23 @@ import React, { Component } from "react";
 import "./App.css";
 import List from "./components/list/list";
 import { getGamesNameList, getGamesCoverList, getGamesDetailsList } from "./services/gameListClient";
+import Data from "./components/Data"
 
 export default class App extends Component {
+  state = {
+    title : "",
+    datas : []
+  }
 
   async componentDidMount() {
-    const data = await gamesNameList
+    const datas = await getGamesNameList();
     const gamesNameList = await getGamesNameList();
     const gamesDetailsList = await getGamesDetailsList("covers");
     const gamesCoverList = await getGamesCoverList("covers");
-    console.log("App.render ===>", gamesNameList, gamesDetailsList);
+    console.log("App.gameNameList ===>", gamesNameList);
+    console.log("App.gamedetails =====>", gamesDetailsList)
     this.setState({
-      data,
+      datas,
       gamesNameList,
       gamesCoverList,
       gamesDetailsList,
@@ -30,7 +36,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { title } = this.state
+   const { title , datas } = this.state
     const { gamesNameList, gamesCoverList, gamesDetailsList } = this.state
     return (
       <div className="App">
@@ -44,12 +50,11 @@ export default class App extends Component {
           />
           CLARA GAME'S PICHIES !!!
         </header>
-        <List list={gamesCoverList} cover={gamesNameList}></List>
-        <List details={gamesDetailsList}></List>
         <input type="text" onChange={(...args) => this.onChangeTitle(...args)} />
         <div>
           {title}
         </div>
+        <Data datas={datas}></Data>
       </div>
     );
   }
