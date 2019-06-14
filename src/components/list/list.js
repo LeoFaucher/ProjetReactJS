@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+//import gameListClient from "./services/gameListClient"
 
 
 export default class List extends Component {
 
   static defaultProps = {
-    games: [],
+    data: [],
     show: false
   };
 
@@ -28,8 +29,8 @@ export default class List extends Component {
   }
 
   gameList() {
-    const { games } = this.props;
-    return games.map((item, index) => (
+    const { data } = this.props;
+    return data.map((item, index) => (
       <li key={index}>
         <div onClick={this.toggleTittle.bind(this)}>{item.title}</div>
         {this.gameNameCoverList(item)}

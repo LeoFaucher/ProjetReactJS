@@ -6,11 +6,13 @@ import { getGamesNameList, getGamesCoverList, getGamesDetailsList } from "./serv
 export default class App extends Component {
 
   async componentDidMount() {
-    const gamesNameList = await getGamesNameList("games");
+    const data = await gamesNameList
+    const gamesNameList = await getGamesNameList();
     const gamesDetailsList = await getGamesDetailsList("covers");
     const gamesCoverList = await getGamesCoverList("covers");
     console.log("App.render ===>", gamesNameList, gamesDetailsList);
     this.setState({
+      data,
       gamesNameList,
       gamesCoverList,
       gamesDetailsList,
