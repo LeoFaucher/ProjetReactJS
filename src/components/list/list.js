@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Button from '@material-ui/core/Button';
+
 
 export default class List extends Component {
 
@@ -40,7 +42,8 @@ export default class List extends Component {
     const { show } = this.props
     return (
       <div className="gameList">
-        <button onClick={this.toggleTitle.bind(this)}>{show ? 'Hide' : 'Show'}</button>
+        <Button variant="outlined" color="secondary" className="show" onClick={this.toggleTitle.bind(this)}>{show ? 'Hide' : 'Show'}
+        </Button>
         <ul>
           <li>
             {this.gameList()}

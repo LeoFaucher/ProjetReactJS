@@ -42,4 +42,4 @@ export async function getGamesDetailsList() {
         data: "fields *; limit 50;"
     })
     return data
-}
+  }
