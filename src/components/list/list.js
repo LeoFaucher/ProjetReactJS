@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 
 export default class List extends Component {
+
   static defaultProps = {
     games: [],
     show: false
   };
-  toggleTitle() {
-    const {show} = this.state
 
+  toggleTitle() {
+    const { show } = this.state
     this.setState({
       show: !show
     })
   }
 
-  gameNameCoverList(){
-    const {show} = this.state
-
+  gameNameCoverList() {
+    const { show } = this.state
     if (!show) {
       return
     }
@@ -25,7 +25,6 @@ export default class List extends Component {
       </div>
     )
   }
-  
 
   gameList() {
     const { games } = this.props;
@@ -38,14 +37,14 @@ export default class List extends Component {
   }
 
   render() {
-    const {show} = this.props
+    const { show } = this.props
     return (
       <div className="gameList">
-          <button onClick={this.toggleTitle.bind(this)}>{show ? 'Hide' : 'Show'}</button>
+        <button onClick={this.toggleTitle.bind(this)}>{show ? 'Hide' : 'Show'}</button>
         <ul>
-        <li>
-        {this.gameList()}
-        </li>
+          <li>
+            {this.gameList()}
+          </li>
         </ul>
       </div>
     );

@@ -4,11 +4,12 @@ import List from "./components/list/list";
 import { getGamesNameList, getGamesCoverList, getGamesDetailsList } from "./services/gameListClient";
 
 export default class App extends Component {
+
   async componentDidMount() {
     const gamesNameList = await getGamesNameList("games");
     const gamesDetailsList = await getGamesDetailsList("covers");
     const gamesCoverList = await getGamesCoverList("covers");
-    console.log("App.render ===>", gamesNameList , gamesDetailsList);
+    console.log("App.render ===>", gamesNameList, gamesDetailsList);
     this.setState({
       gamesNameList,
       gamesCoverList,
@@ -16,19 +17,19 @@ export default class App extends Component {
     });
   }
 
-  state = { title: 'test', cover: '', name: ''}
+  state = { title: 'test', cover: '', name: '' }
 
-  onChangeTitle (event) {
+  onChangeTitle(event) {
     this.setState({
       title: event.currentTarget.value
-      // ici on fera en sorte qu'on récupère les infos de la liste
+      //ici on fera en sorte qu'on récupère les infos de la liste
       //gamesNameList, gamesCoverList: event.currentTarget.value
     })
   }
 
   render() {
-    const{title} = this.state
-    const {gamesNameList,gamesCoverList, gamesDetailsList} = this.state
+    const { title } = this.state
+    const { gamesNameList, gamesCoverList, gamesDetailsList } = this.state
     return (
       <div className="App">
         <header className="App-header">
@@ -38,15 +39,15 @@ export default class App extends Component {
             alt="Logo"
             height="300"
             width="300"
-          /> 
+          />
           LA PICHE GAME'S
         </header>
-        <List list = {gamesCoverList} cover = {gamesNameList}></List>
-        <List details = {gamesDetailsList}></List>
-        <input type="text" onChange={(...args) => this.onChangeTitle(...args)}/>
+        <List list={gamesCoverList} cover={gamesNameList}></List>
+        <List details={gamesDetailsList}></List>
+        <input type="text" onChange={(...args) => this.onChangeTitle(...args)} />
         <div>
           {title}
-        </div>  
+        </div>
       </div>
     );
   }
