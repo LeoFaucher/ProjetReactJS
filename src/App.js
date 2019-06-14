@@ -5,30 +5,28 @@ import { getGamesNameList, getGamesCoverList, getGamesDetailsList } from "./serv
 
 export default class App extends Component {
 
+  state = { details: [] }
+
   async componentDidMount() {
     const gamesNameList = await getGamesNameList("games");
     const gamesDetailsList = await getGamesDetailsList("covers");
     const gamesCoverList = await getGamesCoverList("covers");
-    console.log("App.render ===>", gamesNameList, gamesDetailsList);
     this.setState({
       gamesNameList,
       gamesCoverList,
-      gamesDetailsList,
+      gamesDetailsList
     });
   }
 
-  state = { title: 'test', cover: '', name: '' }
-
-  onChangeTitle(event) {
+  onChangeDetails(event) {
     this.setState({
-      title: event.currentTarget.value
-      //ici on fera en sorte qu'on récupère les infos de la liste
-      //gamesNameList, gamesCoverList: event.currentTarget.value
+      cover: event.currentTarget.value,
+      details: event.currentTarget.value
     })
+    return this.state
   }
 
   render() {
-    const { title } = this.state
     const { gamesNameList, gamesCoverList, gamesDetailsList } = this.state
     return (
       <div className="App">
@@ -44,10 +42,7 @@ export default class App extends Component {
         </header>
         <List list={gamesCoverList} cover={gamesNameList}></List>
         <List details={gamesDetailsList}></List>
-        <input type="text" onChange={(...args) => this.onChangeTitle(...args)} />
-        <div>
-          {title}
-        </div>
+        <input type="text" onChange={(...args) => this.onChangeDetails(...args)} />
       </div>
     );
   }

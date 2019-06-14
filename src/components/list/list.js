@@ -9,14 +9,14 @@ export default class List extends Component {
   };
 
   toggleTitle() {
-    const { show } = this.state
+    const { show } = this.props
     this.setState({
       show: !show
     })
   }
 
   gameNameCoverList() {
-    const { show } = this.state
+    const { show } = this.props
     if (!show) {
       return
     }
@@ -27,25 +27,14 @@ export default class List extends Component {
     )
   }
 
-  gameList() {
-    const { games } = this.props;
-    return games.map((item, index) => (
-      <li key={index}>
-        <div onClick={this.toggleTittle.bind(this)}>{item.title}</div>
-        {this.gameNameCoverList(item)}
-      </li>
-    ));
-  }
-
   render() {
+    const { games } = this.props;
     return (
       <div className="gameList">
-        <ul>
-          <li>
-            {this.gameList()}
-          </li>
-        </ul>
+        {games.map((item, index) => (
+          <div key={index}>{item}</div>
+        ))}
       </div>
-    );
+    )
   }
 }

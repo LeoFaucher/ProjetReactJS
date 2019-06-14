@@ -31,7 +31,6 @@ export async function getGamesCoverList() {
 }
 
 export async function getGamesDetailsList() {
-
     const { data } = await axios({
         url: URL + '/games',
         method: 'POST',
